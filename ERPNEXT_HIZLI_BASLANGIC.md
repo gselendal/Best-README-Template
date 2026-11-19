@@ -1,8 +1,26 @@
 # ERPNext Hızlı Başlangıç Rehberi
 
 <p align="center">
+  <img src="images/erpnext/setup/quick-start-banner.png" alt="ERPNext Hızlı Başlangıç" width="800">
+  <br/>
   <strong>10 Dakikada ERPNext'e Başlayın!</strong>
 </p>
+
+---
+
+## 🎯 Hızlı Başlangıç Yol Haritası
+
+```mermaid
+graph LR
+    A[⏱️ 2 dk<br/>Hesap Aç] --> B[⚙️ 3 dk<br/>Yapılandır]
+    B --> C[📝 5 dk<br/>İlk Kayıtlar]
+    C --> D[✅ Hazır<br/>Kullanmaya Başla]
+    
+    style A fill:#4caf50,color:#fff
+    style B fill:#2196f3,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+```
 
 ---
 
@@ -70,12 +88,87 @@ Muhasebe > Satış Faturası > Yeni
 → Kaydet ve Gönder
 ```
 
+## 🖥️ ERPNext Dashboard Görünümü
+
+**Ana Ekran - Modüller:**
+
+```
+┌────────────────────────────────────────────────────────────┐
+│  🏠 ERPNext              [🔍 Ara: Ctrl+K]    👤 Admin  🔔  │
+├────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📊 Muhasebe    💼 Satış    🛒 Satın Alma   📦 Stok       │
+│  👥 İK          🏭 Üretim   📈 Proje        ⚙️ Ayarlar    │
+│                                                             │
+│  ┌──────────────────────────────────────────────────────┐ │
+│  │  📈 KPI Dashboard                                     │ │
+│  │  ┌─────────────┬──────────────┬──────────────┐       │ │
+│  │  │ 💰 Günlük   │ 📦 Stok      │ 👥 Personel  │       │ │
+│  │  │ Satış       │ Durumu       │ Devam        │       │ │
+│  │  │ 125.450 TL  │ %87          │ 45/48        │       │ │
+│  │  └─────────────┴──────────────┴──────────────┘       │ │
+│  └──────────────────────────────────────────────────────┘ │
+│                                                             │
+│  📋 Son İşlemler:                                          │
+│  • Satış Faturası #INV-2026-00123                         │
+│  • Ödeme Girişi #PAY-2026-00089                           │
+│  • Stok Hareketi #STE-2026-00456                          │
+│                                                             │
+└────────────────────────────────────────────────────────────┘
+```
+
+**Modül Navigasyonu - Görsel Harita:**
+
+```mermaid
+graph TD
+    A[🏠 Ana Sayfa] --> B[📊 Muhasebe]
+    A --> C[💼 Satış]
+    A --> D[🛒 Satın Alma]
+    A --> E[📦 Stok]
+    A --> F[👥 İK]
+    
+    B --> B1[Fatura]
+    B --> B2[Ödeme]
+    B --> B3[Raporlar]
+    
+    C --> C1[Teklif]
+    C --> C2[Sipariş]
+    C --> C3[Müşteri]
+    
+    E --> E1[Depo]
+    E --> E2[Hareket]
+    E --> E3[Sayım]
+    
+    style A fill:#1976d2,color:#fff
+    style B fill:#388e3c,color:#fff
+    style C fill:#f57c00,color:#fff
+    style D fill:#7b1fa2,color:#fff
+    style E fill:#0097a7,color:#fff
+    style F fill:#d32f2f,color:#fff
+```
+
 ## 📊 Günlük Kullanım Komutları
+
+**Arayüz Navigasyonu:**
+
+<p align="center">
+  <img src="images/erpnext/screenshots/main-dashboard.png" alt="Ana Dashboard" width="900">
+</p>
 
 ### Hızlı Arama (AwesomeBar)
 ```
 Ctrl + K → "Satış Faturası" yaz → Enter
 ```
+
+**AwesomeBar Örnekleri:**
+
+| Arama | Sonuç |
+|-------|-------|
+| `inv` | 📃 Sales Invoice (Satış Faturası) |
+| `cust` | 👤 Customer (Müşteri) |
+| `item` | 📦 Item (Ürün) |
+| `pay` | 💰 Payment Entry (Ödeme) |
+| `so` | 📋 Sales Order (Satış Siparişi) |
 
 ### Yeni Belge
 ```
@@ -99,26 +192,168 @@ Ctrl + G
 
 ## 🎯 İlk Hafta Hedefleri
 
-### Gün 1: Temel Kurulum
-- ✅ Şirket bilgilerini tamamla
-- ✅ 3 müşteri ekle
-- ✅ 5 ürün ekle
-- ✅ 1 test faturası kes
+**7 Günde ERPNext Uzmanı Olun:**
 
-### Gün 2-3: Stok Yönetimi
-- ✅ Depo yapısını oluştur
-- ✅ Açılış stoku gir
-- ✅ İlk stok hareketi yap
+```mermaid
+gantt
+    title İlk Hafta Öğrenme Planı
+    dateFormat  DD
+    section Kurulum
+    Şirket Bilgileri        :done, 01, 1d
+    Kullanıcı & Rol         :done, 01, 1d
+    section Temel Veri
+    Müşteri & Tedarikçi     :active, 02, 1d
+    Ürün Tanımlama          :active, 02, 1d
+    section Stok
+    Depo Yapısı             : 03, 1d
+    Açılış Stoku            : 03, 1d
+    section İşlemler
+    İlk Fatura              : 04, 1d
+    Satın Alma              : 05, 1d
+    section Raporlar
+    Rapor İnceleme          : 06, 2d
+```
 
-### Gün 4-5: Satın Alma
-- ✅ 3 tedarikçi ekle
-- ✅ İlk satın alma siparişi
-- ✅ Malzeme girişi yap
+### 📅 Günlük Hedefler - Detaylı
 
-### Gün 6-7: Raporlar
-- ✅ Stok raporu al
-- ✅ Satış raporu incele
-- ✅ Kâr-zarar raporu kontrol et
+**🗓️ Gün 1: Temel Kurulum**
+
+```
+┌─ Sabah (2 saat) ────────────────────────────────┐
+│ ✅ Şirket bilgilerini tamamla                   │
+│    • Logo yükle                                  │
+│    • Adres ve iletişim bilgileri                │
+│    • Vergi bilgileri                            │
+│                                                  │
+│ ✅ Kullanıcı rolleri ayarla                     │
+│    • Muhasebeci, Satış, Depo rolleri           │
+└──────────────────────────────────────────────────┘
+
+┌─ Öğleden Sonra (2 saat) ────────────────────────┐
+│ ✅ 3 müşteri ekle                                │
+│ ✅ 5 ürün ekle (resim + fiyat ile)              │
+│ ✅ 1 test faturası kes                           │
+└──────────────────────────────────────────────────┘
+```
+
+**🗓️ Gün 2-3: Stok Yönetimi**
+
+```
+┌─ Depo Kurulumu ──────────────────────────────────┐
+│ ✅ Depo yapısını oluştur                         │
+│    📦 Ana Depo                                    │
+│    ├─ 🔧 Hammadde                                │
+│    ├─ ⚙️ Yarı Mamul                              │
+│    └─ 📦 Mamul                                    │
+│                                                   │
+│ ✅ Açılış stoku gir (Excel'den yükle)            │
+│ ✅ İlk stok hareketi yap (transfer)              │
+│ ✅ Minimum stok seviyesi belirle                 │
+└───────────────────────────────────────────────────┘
+```
+
+**🗓️ Gün 4-5: Satın Alma**
+
+```
+┌─ Tedarik Zinciri ────────────────────────────────┐
+│ ✅ 3 tedarikçi ekle                              │
+│    • İletişim bilgileri                          │
+│    • Ödeme şartları                              │
+│    • Banka bilgileri                             │
+│                                                   │
+│ ✅ İlk satın alma siparişi                       │
+│    Talep → Teklif → Sipariş                     │
+│                                                   │
+│ ✅ Malzeme girişi yap                            │
+│    • Kalite kontrol                              │
+│    • Stok kaydı                                  │
+└───────────────────────────────────────────────────┘
+```
+
+**🗓️ Gün 6-7: Raporlar & Analiz**
+
+```
+┌─ Raporlama Becerileri ───────────────────────────┐
+│ ✅ Stok raporu al                                │
+│    • Stok bakiyesi                               │
+│    • Hareket raporu                              │
+│    • Yaşlandırma                                 │
+│                                                   │
+│ ✅ Satış raporu incele                           │
+│    • Müşteri bazlı                               │
+│    • Ürün bazlı                                  │
+│    • Trend analizi                               │
+│                                                   │
+│ ✅ Kâr-zarar raporu kontrol et                   │
+│    • Gelir-gider analizi                         │
+│    • Brüt kâr marjı                              │
+└───────────────────────────────────────────────────┘
+```
+
+**İlerleme Takip Kartı:**
+
+<table>
+<tr>
+<th>Gün</th>
+<th>Konu</th>
+<th>Hedef Süre</th>
+<th>Durum</th>
+<th>Notlar</th>
+</tr>
+<tr>
+<td>1️⃣</td>
+<td>Temel Kurulum</td>
+<td>4 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>Stok - Bölüm 1</td>
+<td>3 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td>Stok - Bölüm 2</td>
+<td>3 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>4️⃣</td>
+<td>Satın Alma - 1</td>
+<td>3 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>5️⃣</td>
+<td>Satın Alma - 2</td>
+<td>3 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>6️⃣</td>
+<td>Raporlar</td>
+<td>3 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+<tr>
+<td>7️⃣</td>
+<td>Genel Tekrar</td>
+<td>2 saat</td>
+<td>⬜</td>
+<td>_______________</td>
+</tr>
+</table>
+
+<p align="center">
+  <img src="images/erpnext/diagrams/first-week-roadmap.png" alt="İlk Hafta Yol Haritası" width="900">
+</p>
 
 ## 💡 İpuçları
 

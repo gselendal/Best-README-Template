@@ -41,6 +41,12 @@
 
 ## ERPNext Nedir?
 
+<p align="center">
+  <img src="images/erpnext/diagrams/erpnext-overview.png" alt="ERPNext Genel Bakış" width="800">
+  <br/>
+  <em>ERPNext - Tüm İş Süreçlerinizi Tek Platformda Yönetin</em>
+</p>
+
 ERPNext, Frappe Framework üzerine kurulmuş, **tamamen açık kaynaklı** ve **ücretsiz** bir kurumsal kaynak planlama (ERP) sistemidir. Küçük ve orta ölçekli işletmeler (KOBİ'ler) için tasarlanmış olup, aşağıdaki özellikleri sunar:
 
 - ✅ **Tam Entegre Sistem**: Muhasebe, stok, satış, satın alma, üretim, İK ve daha fazlası
@@ -50,17 +56,124 @@ ERPNext, Frappe Framework üzerine kurulmuş, **tamamen açık kaynaklı** ve **
 - ✅ **Mobil Uyumlu**: Tablet ve akıllı telefondan kullanım
 - ✅ **Topluluk Desteği**: Geniş kullanıcı ve geliştirici topluluğu
 
+### ERPNext Modül Mimarisi
+
+```mermaid
+graph TB
+    A[ERPNext Ana Sistem] --> B[Muhasebe]
+    A --> C[Satış & CRM]
+    A --> D[Satın Alma]
+    A --> E[Stok Yönetimi]
+    A --> F[İnsan Kaynakları]
+    A --> G[Üretim]
+    A --> H[Proje Yönetimi]
+    
+    B --> B1[Faturalar]
+    B --> B2[Ödemeler]
+    B --> B3[Mali Raporlar]
+    
+    C --> C1[Teklifler]
+    C --> C2[Siparişler]
+    C --> C3[Müşteri Yönetimi]
+    
+    D --> D1[Satın Alma Siparişi]
+    D --> D2[Tedarikçi Yönetimi]
+    D --> D3[Malzeme Talepleri]
+    
+    E --> E1[Depo Yönetimi]
+    E --> E2[Stok Hareketi]
+    E --> E3[Seri No/Parti Takibi]
+    
+    F --> F1[Çalışan Yönetimi]
+    F --> F2[Bordro]
+    F --> F3[İzin & Devam]
+    
+    G --> G1[Ürün Reçetesi BOM]
+    G --> G2[İş Emirleri]
+    G --> G3[Kapasite Planlama]
+    
+    H --> H1[Görevler]
+    H --> H2[Zaman Takibi]
+    H --> H3[Gantt Şemaları]
+    
+    style A fill:#1f77b4,color:#fff
+    style B fill:#2ca02c,color:#fff
+    style C fill:#ff7f0e,color:#fff
+    style D fill:#d62728,color:#fff
+    style E fill:#9467bd,color:#fff
+    style F fill:#8c564b,color:#fff
+    style G fill:#e377c2,color:#fff
+    style H fill:#7f7f7f,color:#fff
+```
+
 ### ERPNext ile Neler Yapabilirsiniz?
 
+<table>
+<tr>
+<td width="50%">
+
+**📊 Finansal Yönetim**
 - Fatura kesme ve muhasebe takibi
-- Stok ve depo yönetimi
-- Satış ve satın alma süreçleri
-- İnsan kaynakları ve bordro
-- Üretim planlama ve takibi
-- Proje ve görev yönetimi
-- CRM ve müşteri ilişkileri
-- E-ticaret entegrasyonu
-- Detaylı raporlama ve analizler
+- Banka mutabakatı
+- Vergi hesaplamaları
+- Mali raporlar ve analizler
+
+**🛒 Satın Alma & Tedarik**
+- Tedarikçi yönetimi
+- Satın alma siparişleri
+- Malzeme talepleri
+- Fiyat karşılaştırma
+
+</td>
+<td width="50%">
+
+**💼 Satış & Müşteri**
+- CRM ve fırsat takibi
+- Teklif hazırlama
+- Satış siparişleri
+- Sevkiyat yönetimi
+
+**📦 Stok & Lojistik**
+- Çoklu depo yönetimi
+- Seri no/parti takibi
+- Stok transfer ve sayım
+- Minimum stok uyarıları
+
+</td>
+</tr>
+<tr>
+<td>
+
+**👥 İnsan Kaynakları**
+- Personel yönetimi
+- Bordro ve maaş hesaplama
+- İzin ve devam takibi
+- Performans değerlendirme
+
+**🏭 Üretim Planlama**
+- Ürün reçetesi (BOM)
+- İş emirleri
+- Üretim planlama
+- Kapasite yönetimi
+
+</td>
+<td>
+
+**📈 Proje & Görev**
+- Proje yönetimi
+- Görev takibi
+- Zaman çizelgeleri
+- Gantt şemaları
+
+**🔍 Raporlama & BI**
+- Gerçek zamanlı dashboardlar
+- Özelleştirilebilir raporlar
+- KPI takibi
+- Veri analizi
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -166,26 +279,125 @@ ERPNext'in muhasebe modülü, Türkiye'deki vergi mevzuatına uyumlu çalışabi
 
 **Erişim:** `Muhasebe > Hesap Planı`
 
-Türkiye'deki Tek Düzen Hesap Planı (TDHP) ile uyumlu yapılandırma:
+**Türkiye Tek Düzen Hesap Planı (TDHP) - Görsel Ağaç:**
+
+```mermaid
+graph TD
+    ROOT[🏦 Hesap Planı] --> A[💰 100 Dönen Varlıklar]
+    ROOT --> B[🏢 200 Duran Varlıklar]
+    ROOT --> C[📋 300 KVYK]
+    ROOT --> D[📊 400 UVYK]
+    ROOT --> E[💼 500 Özkaynaklar]
+    ROOT --> F[📈 600 Gelirler]
+    ROOT --> G[📉 700 Giderler]
+    
+    A --> A1[100 Kasa]
+    A --> A2[102 Bankalar]
+    A --> A3[120 Alıcılar]
+    A --> A4[153 Ticari Mallar]
+    
+    A2 --> A21[102.01 Ziraat Bankası]
+    A2 --> A22[102.02 İş Bankası]
+    A2 --> A23[102.03 Garanti BBVA]
+    
+    C --> C1[320 Satıcılar]
+    C --> C2[360 Ödenecek Vergiler]
+    C --> C3[335 Personele Borçlar]
+    
+    C2 --> C21[360.01 KDV]
+    C2 --> C22[360.02 Gelir Vergisi]
+    C2 --> C23[360.03 Damga Vergisi]
+    
+    F --> F1[600 Yurtiçi Satışlar]
+    F --> F2[601 Yurtdışı Satışlar]
+    F --> F3[602 Hizmet Satışları]
+    
+    G --> G1[750 Pazarlama Giderleri]
+    G --> G2[770 Genel Yönetim]
+    G --> G3[780 Finansman Giderleri]
+    
+    style ROOT fill:#1976d2,color:#fff
+    style A fill:#4caf50,color:#fff
+    style B fill:#2196f3,color:#fff
+    style C fill:#f44336,color:#fff
+    style D fill:#9c27b0,color:#fff
+    style E fill:#009688,color:#fff
+    style F fill:#8bc34a,color:#fff
+    style G fill:#ff5722,color:#fff
+```
+
+**TDHP Hiyerarşik Yapı:**
 
 ```
-Ana Hesaplar:
-├── 100-199 Dönen Varlıklar
+📊 ANA HESAPLAR (Türkiye - TDHP Uyumlu)
+│
+├── 💰 100-199 DÖNEN VARLIKLAR
 │   ├── 100 Kasa
+│   │   ├── 100.01 TL Kasa
+│   │   └── 100.02 Döviz Kasa (USD)
 │   ├── 102 Bankalar
-│   └── 120 Alıcılar
-├── 200-299 Duran Varlıklar
-├── 300-399 Kısa Vadeli Yabancı Kaynaklar
+│   │   ├── 102.01 Ziraat Bankası - TL Vadesiz
+│   │   ├── 102.02 İş Bankası - TL Vadeli
+│   │   └── 102.03 Garanti BBVA - Döviz
+│   ├── 108 Diğer Hazır Değerler
+│   ├── 120 Alıcılar
+│   │   ├── 120.01 Yurtiçi Alıcılar
+│   │   └── 120.02 Yurtdışı Alıcılar
+│   ├── 121 Alacak Senetleri
+│   └── 153 Ticari Mallar
+│
+├── 🏢 200-299 DURAN VARLIKLAR
+│   ├── 253 Tesisler, Makine ve Cihazlar
+│   ├── 254 Taşıtlar
+│   └── 257 Birikmiş Amortismanlar (-)
+│
+├── 📋 300-399 KISA VADELİ YABANCI KAYNAKLAR
 │   ├── 320 Satıcılar
-│   └── 360 Ödenecek Vergiler
-├── 400-499 Uzun Vadeli Yabancı Kaynaklar
-├── 500-599 Özkaynaklar
-├── 600-699 Gelirler
-│   └── 600 Yurtiçi Satışlar
-└── 700-799 Giderler
+│   │   ├── 320.01 Yurtiçi Satıcılar
+│   │   └── 320.02 Yurtdışı Satıcılar
+│   ├── 335 Personele Borçlar
+│   ├── 360 Ödenecek Vergi ve Fonlar
+│   │   ├── 360.01 Ödenecek KDV
+│   │   ├── 360.02 Ödenecek Gelir Vergisi
+│   │   ├── 360.03 Ödenecek Damga Vergisi
+│   │   └── 360.04 Ödenecek SGK Primi
+│   └── 361 Ödenecek Sosyal Güvenlik Kesintileri
+│
+├── 📊 400-499 UZUN VADELİ YABANCI KAYNAKLAR
+│   └── 400 Banka Kredileri
+│
+├── 💼 500-599 ÖZKAYNAKLAR
+│   ├── 500 Sermaye
+│   ├── 540 Geçmiş Yıllar Kârları
+│   └── 590 Dönem Net Kârı/Zararı
+│
+├── 📈 600-699 GELİRLER
+│   ├── 600 Yurtiçi Satışlar
+│   ├── 601 Yurtdışı Satışlar
+│   ├── 602 Hizmet Satışları
+│   ├── 610 Satıştan İadeler (-)
+│   ├── 611 Satış İskontoları (-)
+│   └── 691 Kur Farkı Gelirleri
+│
+└── 📉 700-799 GİDERLER
+    ├── 710 Direkt İlk Madde ve Malzeme Giderleri
+    ├── 720 Direkt İşçilik Giderleri
+    ├── 730 Genel Üretim Giderleri
+    ├── 750 Araştırma ve Geliştirme Giderleri
+    ├── 760 Pazarlama, Satış ve Dağıtım Giderleri
     ├── 770 Genel Yönetim Giderleri
-    └── 750 Pazarlama Giderleri
+    │   ├── 770.01 Personel Ücretleri
+    │   ├── 770.02 SGK İşveren Payı
+    │   ├── 770.03 Kira Giderleri
+    │   ├── 770.04 Elektrik-Su-Doğalgaz
+    │   └── 770.05 Haberleşme Giderleri
+    └── 780 Finansman Giderleri
+        └── 780.01 Kredi Faiz Giderleri
 ```
+
+<p align="center">
+  <img src="images/erpnext/diagrams/chart-of-accounts.png" alt="Hesap Planı Yapısı" width="800">
+</p>
 
 **Yeni Hesap Ekleme:**
 1. Muhasebe > Hesap Planı'na git
@@ -228,21 +440,158 @@ Satıcıdan aldığınız malzeme/hizmet faturaları için kullanılır.
 
 #### 1.3 Ödeme Girişi (Payment Entry)
 
-**Tahsilat Kaydı:**
-1. Muhasebe > Ödeme Girişi > Yeni
-2. Ödeme Tipi: **Receive (Tahsil)**
-3. Parti Tipi: **Müşteri**
-4. Müşteriyi seç
-5. Ödeme hesabı: Kasa veya Banka
-6. Tutarı gir
-7. Faturayı eşleştir
-8. Kaydet ve Gönder
+**Ödeme Süreci - Görsel Akış:**
 
-**Ödeme Kaydı:**
-1. Ödeme Tipi: **Pay (Ödeme)**
-2. Parti Tipi: **Satıcı**
-3. Satıcıyı seç
-4. Devamı yukarıdaki gibi
+```mermaid
+graph TD
+    A[💳 Ödeme İşlemi] --> B{Ödeme Tipi?}
+    
+    B -->|Tahsilat| C[📥 Receive<br/>Müşteriden Tahsil]
+    B -->|Ödeme| D[📤 Pay<br/>Tedarikçiye Ödeme]
+    
+    C --> C1[👤 Müşteri Seç]
+    C1 --> C2[📃 Fatura Seç]
+    C2 --> C3[💰 Tutar Gir]
+    C3 --> C4{Ödeme Yöntemi?}
+    
+    C4 -->|Nakit| C5[💵 Kasa]
+    C4 -->|Havale/EFT| C6[🏦 Banka]
+    C4 -->|Kredi Kartı| C7[💳 POS]
+    C4 -->|Çek| C8[📝 Çek Hesabı]
+    
+    D --> D1[🏭 Tedarikçi Seç]
+    D1 --> D2[📋 Fatura Seç]
+    D2 --> D3[💸 Tutar Gir]
+    D3 --> D4[🏦 Banka Seç]
+    
+    C5 --> E[✅ Kaydet]
+    C6 --> E
+    C7 --> E
+    C8 --> E
+    D4 --> E
+    
+    E --> F[📊 Muhasebe Kaydı<br/>Otomatik]
+    F --> G[🔔 Bildirim]
+    
+    style A fill:#1976d2,color:#fff
+    style C fill:#4caf50,color:#fff
+    style D fill:#f44336,color:#fff
+    style E fill:#2196f3,color:#fff
+    style F fill:#9c27b0,color:#fff
+```
+
+**Tahsilat İşlemi - Adım Adım:**
+
+<table>
+<tr>
+<th>Adım</th>
+<th>İşlem</th>
+<th>Ekran</th>
+<th>Notlar</th>
+</tr>
+<tr>
+<td>1️⃣</td>
+<td>Ödeme Girişi Aç</td>
+<td><code>Muhasebe > Ödeme Girişi > Yeni</code></td>
+<td>Yeni kayıt başlat</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>Ödeme Tipi</td>
+<td><strong>Receive (Tahsil)</strong></td>
+<td>Müşteriden para alıyoruz</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td>Parti Tipi</td>
+<td><strong>Customer (Müşteri)</strong></td>
+<td>Müşteri seç butonu aktif olur</td>
+</tr>
+<tr>
+<td>4️⃣</td>
+<td>Müşteri</td>
+<td>Listeden müşteri seç</td>
+<td>Açık faturaları gelir</td>
+</tr>
+<tr>
+<td>5️⃣</td>
+<td>Ödeme Hesabı</td>
+<td><strong>Kasa</strong> veya <strong>Banka</strong></td>
+<td>Para nereye giriyor</td>
+</tr>
+<tr>
+<td>6️⃣</td>
+<td>Tutar</td>
+<td>Tahsil edilen miktarı gir</td>
+<td>Fatura tutarına eşit veya kısmi</td>
+</tr>
+<tr>
+<td>7️⃣</td>
+<td>Fatura Eşleştirme</td>
+<td>Faturayı seç ve eşleştir</td>
+<td>Otomatik açık bakiye gösterir</td>
+</tr>
+<tr>
+<td>8️⃣</td>
+<td>Kaydet</td>
+<td><strong>Save and Submit</strong></td>
+<td>Muhasebe kaydı otomatik</td>
+</tr>
+</table>
+
+**Ödeme Yöntemleri Karşılaştırma:**
+
+| Yöntem | Hesap | Avantaj | Dezavantaj | Takip |
+|--------|-------|---------|------------|-------|
+| 💵 **Nakit** | Kasa | Anında | Risk | Günlük sayım |
+| 🏦 **Havale/EFT** | Banka | Güvenli | 1-2 gün | Mutabakat |
+| 💳 **Kredi Kartı** | POS | Hızlı | Komisyon | Banka özeti |
+| 📝 **Çek** | Çek Hesabı | Vadeli | Risk | Tahsilat takip |
+
+**Tahsilat Kaydı Örneği:**
+
+```
+┌─────────────────────────────────────────────────┐
+│  📥 ÖDEME GİRİŞİ - TAHSİLAT                     │
+├─────────────────────────────────────────────────┤
+│  Ödeme Tipi      : 📥 Receive (Tahsilat)       │
+│  Parti Tipi      : 👤 Customer                  │
+│  Müşteri         : ABC Teknoloji A.Ş.          │
+│  Tarih           : 19.11.2026                   │
+│  ─────────────────────────────────────────────  │
+│  Ödeme Hesabı    : 🏦 102.01 Ziraat Bankası    │
+│  Tutar           : 36.360,00 TL                 │
+│  ─────────────────────────────────────────────  │
+│  Fatura          : INV-2026-00123               │
+│  Fatura Tutarı   : 36.360,00 TL                 │
+│  Önceki Ödeme    : 0,00 TL                      │
+│  Bu Ödeme        : 36.360,00 TL                 │
+│  Kalan           : 0,00 TL                      │
+│  ─────────────────────────────────────────────  │
+│  Referans No     : HAVALE-123456                │
+│  Not             : Fatura bedelinin tamamı      │
+│  ─────────────────────────────────────────────  │
+│  [💾 Kaydet]  [📤 Kaydet ve Gönder]  [❌ İptal] │
+└─────────────────────────────────────────────────┘
+```
+
+**Otomatik Muhasebe Kaydı:**
+
+| Borç | Alacak | Hesap | Tutar |
+|------|--------|-------|-------|
+| ✅ | | 102.01 Ziraat Bankası | 36.360,00 TL |
+| | ✅ | 120.01 Alıcılar - ABC Teknoloji | 36.360,00 TL |
+
+<p align="center">
+  <img src="images/erpnext/screenshots/payment-entry.png" alt="Ödeme Girişi Ekranı" width="900">
+</p>
+
+**Tedarikçiye Ödeme Kaydı:**
+```
+Ödeme Tipi: 📤 Pay (Ödeme)
+Parti Tipi: 🏭 Supplier (Tedarikçi)
+Satıcıyı seç → Fatura seç → Tutar → Banka → Kaydet
+```
 
 #### 1.4 Banka Mutabakatı
 
@@ -299,10 +648,37 @@ Satın Alma > Satıcı > Yeni
 
 #### 2.2 Satın Alma Süreci
 
+**Görsel İş Akışı:**
+
+```mermaid
+graph LR
+    A[Malzeme Talebi] --> B[Tedarikçi Teklifi]
+    B --> C[Fiyat Karşılaştır]
+    C --> D[Satın Alma Siparişi]
+    D --> E[Sipariş Onayı]
+    E --> F[Malzeme Girişi]
+    F --> G[Kalite Kontrol]
+    G --> H[Stok Kaydı]
+    H --> I[Alış Faturası]
+    I --> J[Ödeme]
+    
+    style A fill:#ffeb3b,stroke:#f57c00
+    style D fill:#4caf50,stroke:#2e7d32,color:#fff
+    style F fill:#2196f3,stroke:#1565c0,color:#fff
+    style I fill:#9c27b0,stroke:#6a1b9a,color:#fff
+    style J fill:#f44336,stroke:#c62828,color:#fff
+```
+
+**Detaylı Akış Şeması:**
+
+<p align="center">
+  <img src="images/erpnext/workflows/buying-process.png" alt="Satın Alma Süreci" width="900">
+</p>
+
 **Tam Süreç:**
 ```
-Malzeme Talebi → Tedarikçi Teklifi → Satın Alma Siparişi → 
-Malzeme Girişi → Alış Faturası → Ödeme
+1. Malzeme Talebi → 2. Tedarikçi Teklifi → 3. Satın Alma Siparişi → 
+4. Malzeme Girişi → 5. Alış Faturası → 6. Ödeme
 ```
 
 **1. Malzeme Talebi (Material Request):**
@@ -383,10 +759,60 @@ Satış > Müşteri > Yeni
 
 #### 3.2 Satış Süreci
 
-**Tam Süreç:**
+**Görsel İş Akışı:**
+
+```mermaid
+graph LR
+    A[🔍 Lead<br/>Potansiyel] --> B[💡 Opportunity<br/>Fırsat]
+    B --> C[📄 Quotation<br/>Teklif]
+    C --> D{Kabul?}
+    D -->|Evet| E[📋 Sales Order<br/>Satış Siparişi]
+    D -->|Hayır| F[❌ Kayboldu]
+    E --> G[📦 Delivery Note<br/>Sevkiyat]
+    G --> H[📃 Sales Invoice<br/>Fatura]
+    H --> I[💰 Payment Entry<br/>Tahsilat]
+    I --> J[✅ Tamamlandı]
+    
+    F --> K[🔄 Follow-up]
+    K --> B
+    
+    style A fill:#fff59d
+    style B fill:#81c784
+    style C fill:#64b5f6
+    style E fill:#4caf50,color:#fff
+    style G fill:#ff9800,color:#fff
+    style H fill:#9c27b0,color:#fff
+    style I fill:#2196f3,color:#fff
+    style J fill:#4caf50,color:#fff
+    style F fill:#f44336,color:#fff
 ```
-Potansiyel Müşteri → Fırsat → Teklif → Satış Siparişi → 
-Sevkiyat Notu → Satış Faturası → Tahsilat
+
+**CRM'den Tahsilata Tam Süreç:**
+
+<p align="center">
+  <img src="images/erpnext/workflows/sales-process.png" alt="Satış Süreci" width="900">
+</p>
+
+**Aşama Bazlı Detaylar:**
+
+| Aşama | Durum | Sorumlu | Ortalama Süre |
+|-------|-------|---------|---------------|
+| 🔍 **Lead** | Yeni İlgi | Satış | 1-2 gün |
+| 💡 **Opportunity** | Görüşmeler | Satış | 3-7 gün |
+| 📄 **Quotation** | Teklif Sunuldu | Satış | 1-3 gün |
+| 📋 **Sales Order** | Onaylandı | Satış/Ops | Anında |
+| 📦 **Delivery** | Sevk Hazırlık | Lojistik | 1-5 gün |
+| 📃 **Invoice** | Fatura Kesildi | Muhasebe | Anında |
+| 💰 **Payment** | Tahsilat | Muhasebe | Vade gününde |
+
+**Süreç Yönetimi İpuçları:**
+
+```
+✅ Her aşamayı takip edin
+✅ Müşteriyi sürekli bilgilendirin  
+✅ Belgeleri birbirine bağlayın (link)
+✅ Ödeme şartlarını net belirtin
+✅ Teslimat tarihlerini takip edin
 ```
 
 **1. Potansiyel Müşteri (Lead):**
@@ -470,14 +896,64 @@ Farklı müşteri grupları için farklı fiyatlar:
 Stok > Depo > Depo Ağacı
 ```
 
-**Örnek Depo Yapısı:**
+**Hiyerarşik Depo Organizasyonu:**
+
+```mermaid
+graph TD
+    A[🏢 Ana Depo - Merkez] --> B[🔧 Hammadde Deposu]
+    A --> C[⚙️ Yarı Mamul Deposu]
+    A --> D[📦 Mamul Deposu]
+    A --> E[🔄 İade Ürün Deposu]
+    A --> F[🛠️ Sarf Malzeme Deposu]
+    
+    B --> B1[Bölge A]
+    B --> B2[Bölge B]
+    
+    D --> D1[İhracat Hazır]
+    D --> D2[Yurtiçi Satış]
+    D --> D3[Karantina]
+    
+    F --> F1[Yedek Parça]
+    F --> F2[Ambalaj Malz.]
+    
+    style A fill:#1976d2,color:#fff
+    style B fill:#388e3c,color:#fff
+    style C fill:#f57c00,color:#fff
+    style D fill:#7b1fa2,color:#fff
+    style E fill:#c62828,color:#fff
+    style F fill:#455a64,color:#fff
 ```
-Ana Depo
-├── Hammadde Deposu
-├── Yarı Mamul Deposu
-├── Mamul Deposu
-├── İade Ürün Deposu
-└── Sarf Malzeme Deposu
+
+**Örnek Depo Yapısı - Detaylı:**
+
+<p align="center">
+  <img src="images/erpnext/diagrams/warehouse-structure.png" alt="Depo Yapısı" width="700">
+</p>
+
+**Depo Tipleri ve Kullanım Alanları:**
+
+| Depo Tipi | Kullanım | Stok Takibi | Özellikler |
+|-----------|----------|-------------|------------|
+| 🔧 **Hammadde** | Üretim girdileri | FIFO/LIFO | Lot bazlı |
+| ⚙️ **Yarı Mamul** | Üretim ara ürün | Parti No | WIP takibi |
+| 📦 **Mamul** | Satışa hazır | Seri No | Kalite onaylı |
+| 🔄 **İade** | Geri dönen ürün | Seri No | Karantina |
+| 🛠️ **Sarf** | Yardımcı malzeme | Basit | Tüketim |
+
+**ASCII Depo Haritası:**
+
+```
+┌─────────────────────────────────────────────────┐
+│            🏢 ANA DEPO (MERKEZ)                 │
+├───────────────┬─────────────┬──────────────────┤
+│  🔧 HAMMADDE  │  ⚙️ YARI M. │   📦 MAMUL       │
+│  Bölge A      │  Hat-1      │   İhracat        │
+│  Bölge B      │  Hat-2      │   Yurtiçi        │
+│               │             │   Karantina      │
+├───────────────┴─────────────┴──────────────────┤
+│  🔄 İADE ÜRN. │  🛠️ SARF MAL.                  │
+│  Analiz       │  Yedek Parça │  Ambalaj       │
+└───────────────┴──────────────┴─────────────────┘
 ```
 
 #### 4.2 Ürün Tanımlama
@@ -610,27 +1086,125 @@ Stok > Raporlar > ABC Analizi
 İK > Departman
 ```
 
-Örnek:
-- Genel Müdürlük
-- Satış ve Pazarlama
-- Üretim
-- Ar-Ge
-- Finans
-- İnsan Kaynakları
-- Bilgi İşlem
+**Organizasyon Şeması:**
 
-**Unvanlar:**
-```
-İK > Unvan
+```mermaid
+graph TD
+    CEO[👔 Genel Müdür<br/>CEO]
+    
+    CEO --> GM1[💼 Genel Müdür Yrd.<br/>İdari İşler]
+    CEO --> GM2[💼 Genel Müdür Yrd.<br/>Ticari İşler]
+    
+    GM1 --> HR[👥 İnsan Kaynakları<br/>Müdürü]
+    GM1 --> FIN[💰 Finans<br/>Müdürü]
+    GM1 --> IT[💻 Bilgi İşlem<br/>Müdürü]
+    
+    GM2 --> SALES[📊 Satış & Pazarlama<br/>Müdürü]
+    GM2 --> PROD[🏭 Üretim<br/>Müdürü]
+    GM2 --> RD[🔬 Ar-Ge<br/>Müdürü]
+    
+    HR --> HR1[İK Uzmanı]
+    HR --> HR2[Bordro Uzmanı]
+    
+    FIN --> FIN1[Muhasebe Şefi]
+    FIN --> FIN2[Mali İşler Uzmanı]
+    
+    SALES --> SALES1[Satış Ekip Lideri]
+    SALES --> SALES2[Pazarlama Uzmanı]
+    
+    SALES1 --> SALES3[Satış Temsilcisi x5]
+    
+    PROD --> PROD1[Üretim Şefi]
+    PROD --> PROD2[Kalite Kontrol]
+    
+    PROD1 --> PROD3[Usta x3]
+    PROD3 --> PROD4[Operatör x15]
+    
+    style CEO fill:#d32f2f,color:#fff
+    style GM1 fill:#1976d2,color:#fff
+    style GM2 fill:#1976d2,color:#fff
+    style HR fill:#388e3c,color:#fff
+    style FIN fill:#f57c00,color:#fff
+    style SALES fill:#7b1fa2,color:#fff
+    style PROD fill:#0097a7,color:#fff
 ```
 
-Örnek:
-- Genel Müdür
-- Departman Müdürü
-- Şef
-- Kıdemli Uzman
-- Uzman
-- Stajyer
+**Departman Yapısı - ASCII Şema:**
+
+```
+                    👔 Genel Müdür
+                          |
+        ├─────────────────┴─────────────────┤
+        |                                    |
+   💼 İdari İşler                      💼 Ticari İşler
+        |                                    |
+   ├────┼────┐                         ├────┼────┐
+   |    |    |                         |    |    |
+  👥   💰   💻                        📊   🏭   🔬
+  İK  Fin   IT                       Satış Üreti Ar-Ge
+```
+
+**Unvan Hiyerarşisi:**
+
+<table>
+<tr>
+<th>Seviye</th>
+<th>Unvan</th>
+<th>Kısaltma</th>
+<th>Yetki</th>
+</tr>
+<tr style="background-color:#ffebee">
+<td>7</td>
+<td>👔 Genel Müdür</td>
+<td>GM / CEO</td>
+<td>Tam Yetki</td>
+</tr>
+<tr style="background-color:#e3f2fd">
+<td>6</td>
+<td>💼 Genel Müdür Yardımcısı</td>
+<td>GMY</td>
+<td>Stratejik</td>
+</tr>
+<tr style="background-color:#e8f5e9">
+<td>5</td>
+<td>📋 Departman Müdürü</td>
+<td>Müdür</td>
+<td>Departman</td>
+</tr>
+<tr style="background-color:#fff3e0">
+<td>4</td>
+<td>👨‍💼 Şef / Ekip Lideri</td>
+<td>Şef</td>
+<td>Ekip</td>
+</tr>
+<tr>
+<td>3</td>
+<td>⭐ Kıdemli Uzman</td>
+<td>Sr. Uzman</td>
+<td>Proje</td>
+</tr>
+<tr>
+<td>2</td>
+<td>📊 Uzman</td>
+<td>Uzman</td>
+<td>Görev</td>
+</tr>
+<tr>
+<td>1</td>
+<td>🎓 Stajyer / Asistan</td>
+<td>Stajyer</td>
+<td>Öğrenme</td>
+</tr>
+</table>
+
+**Unvan Tanımlama:**
+```
+İK > Unvan > Yeni
+```
+
+<p align="center">
+  <img src="images/erpnext/diagrams/org-chart.png" alt="Organizasyon Şeması" width="900">
+</p>
 
 #### 5.3 Devam-Devamsızlık (Attendance)
 
@@ -741,19 +1315,126 @@ Tüm ay için bir tıkla bordro:
 Üretim > Ürün Reçetesi > Yeni
 ```
 
-**Örnek BOM:**
+**Ürün Reçetesi Ağacı - Görsel:**
 
-**Ürün:** Ahşap Masa
-- Tablo: 1 adet (1m x 2m ahşap levha)
-- Ayak: 4 adet (70cm ahşap silindir)
-- Vida: 16 adet (M8x40)
-- Tutkal: 100ml
-- Vernik: 200ml
-- **İşçilik:** 2 saat
+```mermaid
+graph TD
+    A[🪑 Ahşap Masa<br/>Ürün Kodu: MASA-001] --> B[📋 Tablo Montajı<br/>Alt Montaj-1]
+    A --> C[🦵 Ayak Seti<br/>Alt Montaj-2]
+    A --> D[🔩 Bağlantı Elemanları]
+    A --> E[🎨 Yüzey İşlemi]
+    
+    B --> B1[🪵 Ahşap Levha<br/>1m x 2m x 25mm]
+    B --> B2[🪚 Kenar Bandı<br/>4m]
+    
+    C --> C1[🌳 Ahşap Ayak<br/>70cm x 4 adet]
+    C --> C2[🔧 Ayak Bağlantı<br/>Metal - 4 adet]
+    
+    D --> D1[🔩 M8x40 Vida<br/>16 adet]
+    D --> D2[💧 Tutkal<br/>100ml]
+    
+    E --> E1[🎨 Vernik<br/>200ml]
+    E --> E2[👨‍🔧 İşçilik<br/>2 saat]
+    
+    style A fill:#1976d2,color:#fff
+    style B fill:#388e3c,color:#fff
+    style C fill:#388e3c,color:#fff
+    style D fill:#f57c00,color:#fff
+    style E fill:#7b1fa2,color:#fff
+```
+
+**BOM Örneği - Tablo Formatı:**
+
+<table>
+<tr>
+<th>Seviye</th>
+<th>Malzeme</th>
+<th>Miktar</th>
+<th>Birim</th>
+<th>Birim Maliyet</th>
+<th>Toplam</th>
+</tr>
+<tr style="background-color:#e3f2fd">
+<td colspan="6"><strong>📦 MASA-001 - Ahşap Masa</strong></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>🪵 Ahşap Levha (100x200cm)</td>
+<td>1</td>
+<td>Adet</td>
+<td>850 TL</td>
+<td>850 TL</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>🌳 Ahşap Ayak (70cm)</td>
+<td>4</td>
+<td>Adet</td>
+<td>120 TL</td>
+<td>480 TL</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>🔩 M8x40 Vida</td>
+<td>16</td>
+<td>Adet</td>
+<td>2 TL</td>
+<td>32 TL</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>💧 Ahşap Tutkal</td>
+<td>100</td>
+<td>ml</td>
+<td>0.50 TL</td>
+<td>50 TL</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>🎨 Su Bazlı Vernik</td>
+<td>200</td>
+<td>ml</td>
+<td>0.80 TL</td>
+<td>160 TL</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 1</td>
+<td>🪚 Kenar Bandı</td>
+<td>4</td>
+<td>m</td>
+<td>15 TL</td>
+<td>60 TL</td>
+</tr>
+<tr style="background-color:#fff3e0">
+<td colspan="5"><strong>Malzeme Ara Toplam</strong></td>
+<td><strong>1.632 TL</strong></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;└─ 2</td>
+<td>👨‍🔧 İşçilik (Kesim, Montaj, Vernik)</td>
+<td>2</td>
+<td>Saat</td>
+<td>85 TL</td>
+<td>170 TL</td>
+</tr>
+<tr style="background-color:#c8e6c9">
+<td colspan="5"><strong>🎯 TOPLAM MALİYET</strong></td>
+<td><strong>1.802 TL</strong></td>
+</tr>
+</table>
 
 **BOM Tipleri:**
-- Çok seviyeli BOM (alt montaj içeren)
-- Alternatif BOM (farklı hammadde seçenekleri)
+
+| Tip | Açıklama | Kullanım |
+|-----|----------|----------|
+| 🔹 **Basit BOM** | Tek seviye | Basit montaj |
+| 🔹 **Çok Seviyeli BOM** | Alt montajlar | Karmaşık ürünler |
+| 🔹 **Alternatif BOM** | Farklı hammadde seçenekleri | Tedarik esnekliği |
+| 🔹 **Varyant BOM** | Model çeşitleri | Müşteriye özel |
+
+<p align="center">
+  <img src="images/erpnext/diagrams/bom-structure.png" alt="BOM Yapısı" width="800">
+</p>
 
 #### 6.2 İş Emri (Work Order)
 
