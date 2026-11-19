@@ -14,6 +14,9 @@ Bu repository'de artık Türkçe dokümantasyonlar da bulunmaktadır:
 
 ERPNext, açık kaynaklı ve ücretsiz bir kurumsal kaynak planlama (ERP) sistemidir. Türk işletmeleri için hazırlanmış kapsamlı kullanım kılavuzları:
 
+#### 📱 [Tablet/Mobil Erişim Rehberi](ERISIM_KILAVUZU.md) 🆕
+**Tüm cihazlardan nasıl erişilir?** - Tablet, telefon ve bilgisayardan erişim yöntemleri
+
 #### 1. [ERPNext Kapsamlı Kullanım Kılavuzu](ERPNEXT_KULLANIM_KILAVUZU.md)
 **200+ sayfa detaylı rehber** - Tüm modüller ve özellikler için eksiksiz Türkçe kılavuz
 
@@ -83,8 +86,10 @@ Proje Linki: [https://github.com/othneildrew/Best-README-Template](https://githu
 ## İçindekiler
 
 ### ERPNext Kılavuzları (Türkçe)
+- 📱 [Erişim Rehberi (Tablet/Mobil)](ERISIM_KILAVUZU.md) 🆕
 - 📖 [Kapsamlı Kullanım Kılavuzu](ERPNEXT_KULLANIM_KILAVUZU.md)
 - ⚡ [Hızlı Başlangıç](ERPNEXT_HIZLI_BASLANGIC.md)
+- 🎨 [Görsel Rehber](ERPNEXT_GORSEL_REHBER.md)
 
 ### Diğer Kaynaklar
 - 📋 [README Şablonu (EN)](README.md)
